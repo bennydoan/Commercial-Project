@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/Account.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CommercialShop.styles.css" asp-append-version="true" />
+</head>
+
+
+<body class="account-bg">
+
+    <header class="py-2 bg-white">
+        <div class="container">
+            <div class="d-flex align-items-center w-100">
+                <!-- centered logo -->
+                <div class="mx-auto text-center">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="d-inline-block">
+                        <img src="@(Url.Content("~/Image/ChelseaLogo.png"))" alt="Chelsea FC" class="logo" />
+                    </a>
+                </div>
+
+  
+            </div>
+        </div>
+    </header>
+
+    <div class="d-flex flex-column min-vh-100">
+        
+        <div class="container d-flex justify-content-center align-items-center flex-grow-1" >
+
+            <!-- Box will size to its content (no w-100 / no forced height) -->
+            <div class="border rounded-4 p-4 shadow-sm mx-auto d-flex flex-column" id="box">
+                <h4 class="text-center" id="user_title">@ViewBag.Header</h4>
+                
+                <!-- removed h-100 so box height follows content -->
+                <main role="main" class="d-flex flex-column justify-content-center mt-4">
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer mt-auto">
+        <div class="container">
+            &copy; @DateTime.Now.Year - ChelseaFc Shop - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+   
+</body>
+</html>

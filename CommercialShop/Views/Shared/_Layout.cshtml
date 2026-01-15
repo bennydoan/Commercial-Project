@@ -1,0 +1,148 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="~/Image/Chelsea-logo.jpeg"/>
+    <title>@ViewData["Title"]</title>
+    <script type="importmap"></script>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/CommercialShop.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <header>
+
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white mb-5 d-flex flex-column">
+            <div class="container-fluid d-flex align-items-center w-100">
+
+                <div class="d-flex flex-grow-1 justify-content-center">
+                    <p id="msg-returns" class="fw-semibold mb-0 text-center">
+                        Shop with confidence - Enjoy hassle-free 90-day returns
+                    </p>
+
+                    <p id="msg-delivery" class="fw-semibold mb-0 text-center d-none">
+                        Free delivery on all orders over $50!
+                    </p>
+                </div>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <partial name="~/Views/Shared/_Partial/_LoginPartial.cshtml" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="d-flex flex-wrap justify-content-center pt-2" id="nav1Box">
+
+                <div class="d-none d-md-flex justify-content-center w-100">
+                    <button type="button" class="btn btn-link text-decoration-none text-dark px-2 px-sm-3">Gift cards</button>
+                    <button type="button" class="btn btn-link text-decoration-none text-dark px-2 px-sm-3">Track Order</button>
+                    <button type="button" class="btn btn-link text-decoration-none text-dark px-2 px-sm-3">Help</button>
+                    <button type="button" class="btn btn-link text-decoration-none text-dark px-2 px-sm-3">My Account</button>
+                    <button type="button" class="btn btn-link text-decoration-none text-dark px-2 px-sm-3">Language</button>
+                    <button type="button" class="btn btn-link text-decoration-none text-dark px-2 px-sm-3">Currency</button>
+                    <button type="button" class="btn btn-link text-decoration-none text-dark px-2 px-sm-3">
+                        <i class="fa-solid fa-cart-shopping" asp-action="ShoppingCart" asp-controller="Cart"></i>
+                    </button>
+                </div>
+
+                <div class="dropdown d-block d-md-none ms-auto">
+                    <button class="btn btn-primary dropdown-toggle"
+                            type="button"
+                            id="navItemsDropdown"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        Menu
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navItemsDropdown">
+                        <li><a class="dropdown-item text-dark" href="#">Gift cards</a></li>
+                        <li><a class="dropdown-item text-dark" href="#">Track Order</a></li>
+                        <li><a class="dropdown-item text-dark" href="#">Help</a></li>
+                        <li><a class="dropdown-item text-dark" href="#">My Account</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item text-dark" href="#">Language</a></li>
+                        <li><a class="dropdown-item text-dark" href="#">Currency</a></li>
+                        <li><a class="dropdown-item text-dark" href="#"><i class="fas fa-cart-shopping me-2"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="d-flex align-items-center mb-4 ">
+
+        <a asp-action="Index" asp-controller="Home">
+            <img class="ms-4" id="chelseaLogo" src="/Image/pageLogo.png" />
+        </a>
+
+        <div id="searchBoxContainer" class="mx-auto position-relative">
+            <!-- icon visible on all sizes; input hidden on xs-sm, visible on md+ -->
+            <i class="fa-solid fa-magnifying-glass search-icon d-block d-md-none " aria-hidden="true"></i>
+
+            <i class="fa-solid fa-magnifying-glass search-icon-desktop d-none d-md-block" aria-hidden="true"></i>
+            <input id="searchBox" class="rounded-pill ps-5 d-none d-md-inline-block" type="text" placeholder="What can we help you find?">
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg bg-white border-bottom">
+        <div class="container-fluid">
+           
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav
+                 flex-column flex-lg-row
+                 w-100
+                 gap-2 gap-lg-0
+                 justify-content-lg-between
+                 align-items-start align-items-lg-center"
+                    style="--bs-scroll-height: 100px;">
+
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Training</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Kits</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Shop By Player</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-secondary fw-semibold text-dark" asp-controller="Home" asp-action="MenPage" >
+                            Men
+                        </a>
+                     </li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" asp-controller="Home" asp-action="WomenPage">Women</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Kids</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Retro</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Gifts & Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Collections</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Gifts & Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link btn btn-secondary fw-semibold text-dark" href="#">Clearance</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2025 - Chelsea Football Club - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

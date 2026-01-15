@@ -1,0 +1,23 @@
+﻿@using System.Security.Claims
+@using Microsoft.AspNetCore.Identity
+
+<div class="d-flex align-items-center gap-2">
+    @if (User?.Identity?.IsAuthenticated ?? false)
+    {
+        <div class="container d-none d-sm-flex align-items-center gap-2">
+            <span class="me-2 d-none d-lg-block">Hello, @User.Identity.Name</span>
+            <a asp-controller="Account" class="btn btn-outline-primary" asp-action="LogOut">LogOut</a>
+        </div>
+
+        <a asp-controller="Account" class="btn btn-outline-primary d-flex d-sm-none" asp-action="LogOut">LogOut</a>
+    }
+    else
+    {
+        <div class="d-none d-sm-flex align-items-center gap-2">
+            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="Register">Register</a>
+            <a class="btn btn-outline-primary" asp-controller="Account" asp-action="LogIn">LogIn</a>
+        </div>
+
+        <a class="btn btn-outline-primary d-block d-sm-none" asp-controller="Account" asp-action="LogIn">LogIn</a>
+    }
+</div>

@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = "Shared/AccountLayout/_AccountLayout.cshtml";
+
+    ViewData["Title"] = "Login page";
+    ViewBag.Header = "Login";
+}
+
+@model CommercialShop.Models.LoginDTOs.Login
+
+<div class="d-flex justify-content-center align-items-center gap-2 mb-3">
+    <p class="mb-0">Don't have an account?</p>
+    <a asp-controller="Account" asp-action="Register" class="text-primary fw-bold">Create an account</a>
+</div>
+
+<div >
+    @if (TempData["EmailConfirmedMessage"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["EmailConfirmedMessage"]
+        </div>
+    }
+
+    @if (TempData["PasswordChanged"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["PasswordChanged"]
+        </div>
+    }
+
+   <form asp-asp-controller="Account" asp-action="Login" method="post" class="w-100 d-flex flex-column justify-content-center">
+
+      
+
+        <div class="mb-3">
+            <label  asp-for="Email" class="form-label">Email address</label>
+            <input  asp-for="Email" type="email" class="form-control" placeholder="name@example.com">
+            <span asp-validation-for="Email" class="text-danger"></span>
+            @if (TempData["ConfirmAtLogin"] != null )
+            {
+                <a href="@Url.Action("VerifyEmail", "Account")">Here</a>
+            }
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control" >
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 form-check">
+            <label asp-for="RememberMe" class="form-check-label">Remember Me</label>
+            <input asp-for="RememberMe" class="form-check-input">
+
+            <div class="float-end">
+                <a asp-controller="Account" asp-action="EmailForChangePassword" class="text-primary">Forgot Your Password?</a>
+                @* change the asp-action for forgot password later  *@
+            </div>
+
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Log In</button>
+
+   </form>
+</div>
+
+@section Scripts {
+    <!-- render the partial that includes jquery.validate/unobtrusive.
+         Ensure jQuery is loaded in the layout before these or include it here. -->
+    <partial name="_ValidationScriptsPartial" />
+}
+
+@* TODO: Create Login with GG or FaceBook *@

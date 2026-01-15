@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Categories>
+
+@* Toggle button for small screens *@
+<button class="btn btn-outline-secondary w-100 d-lg-none mb-3" type="button"
+        data-bs-toggle="offcanvas" data-bs-target="#filterOffcanvas" aria-controls="filterOffcanvas">
+    Filters & Sort
+</button>
+
+@* Sidebar visible on large screens *@
+<div class="d-none d-lg-block">
+    <div class="border-bottom pb-4 mb-3">
+        <h6 class="mb-2">Sort By</h6>
+        <select class="form-select" aria-label="Sort products">
+            <option selected value="1">Lowest Price</option>
+            <option value="2">Highest Price</option>
+            <option value="3">Top Sellers</option>
+            <option value="4">Newest Items</option>
+        </select>
+    </div>
+
+    <div class="mt-2">
+        <h6 class="mb-2">All Departments</h6>
+        @if (Model != null && Model.Any())
+        {
+            <div class="list-group">
+                @foreach (var c in Model)
+                {
+                    var radioId = $"catRadio{c.CategoryId}";
+                    <div class="form-check list-group-item border-0">
+                        <input class="form-check-input me-2" type="radio" name="categoryRadio" id="@radioId" value="@c.CategoryId" />
+                        <label class="form-check-label" for="@radioId">
+                            @c.CategoryName
+                        </label>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p class="text-muted small">No categories available.</p>
+        }
+    </div>
+</div>
+
+@* Offcanvas for small screens (mobile) *@
+<div class="offcanvas offcanvas-start" tabindex="-1" id="filterOffcanvas" aria-labelledby="filterOffcanvasLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="filterOffcanvasLabel">Filters & Sort</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+
+    <div class="offcanvas-body">
+        <div class="border-bottom pb-3 mb-3">
+            <h6 class="mb-2">Sort By</h6>
+            <select class="form-select" aria-label="Sort products (mobile)">
+                <option selected value="1">Lowest Price</option>
+                <option value="2">Highest Price</option>
+                <option value="3">Top Sellers</option>
+                <option value="4">Newest Items</option>
+            </select>
+        </div>
+
+        <div class="mt-2">
+            <h6 class="mb-2">All Departments</h6>
+            @if (Model != null && Model.Any())
+            {
+                <div class="list-group">
+                    @foreach (var c in Model)
+                    {
+                        var radioId = $"catRadioMobile{c.CategoryId}";
+                        <div class="form-check list-group-item border-0">
+                            <input class="form-check-input me-2" type="radio" name="categoryRadioMobile" id="@radioId" value="@c.CategoryId" />
+                            <label class="form-check-label" for="@radioId">
+                                @c.CategoryName
+                            </label>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <p class="text-muted small">No categories available.</p>
+            }
+        </div>
+
+        <div class="mt-4 d-flex gap-2">
+            <button type="button" class="btn btn-primary flex-fill" data-bs-dismiss="offcanvas">Apply</button>
+            <button type="button" class="btn btn-outline-secondary flex-fill" id="clearFiltersBtn" data-bs-dismiss="offcanvas">Clear</button>
+        </div>
+    </div>
+</div>

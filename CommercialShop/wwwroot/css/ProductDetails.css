@@ -1,0 +1,53 @@
+﻿.ShownImage {
+    display: block;
+    width: 75%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+
+
+/* Below Bootstrap md (768px) make the image full width of its container */
+@media (max-width: 767.98px) {
+    .ShownImage {
+        width: 100%;
+        height: auto;
+    }
+}
+
+
+.sizeCtn {
+    width: 100% !important;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .sizeCtn {
+        width: 40% !important;
+    }
+}
+
+
+
+/* Normal state */
+.fourthBtn {
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+}
+
+/* When the radio is checked, style the label */
+.btn-check:checked + .fourthBtn {
+    background-color: black;
+    color: white;
+    border-color: black;
+}
+
+/* Optional: hover effect */
+.fourthBtn:hover {
+    background-color: #f2f2f2;
+}

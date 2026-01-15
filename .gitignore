@@ -1,0 +1,5 @@
+# Visual Studio / .NET standard ignores
+.vs/
+bin/
+obj/
+

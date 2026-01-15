@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "Shared/AccountLayout/_AccountLayout.cshtml";
+    ViewData["Title"] = "Register";
+    ViewBag.Header = "Register";
+
+}
+
+
+@model CommercialShop.Models.RegisterDTOs.Register
+
+<div>
+    <form asp-controller="Account" asp-action="Register" method="post" class="w-100 d-flex flex-column justify-content-center">
+        <div>
+            <p class="float-end ">Already have an account? <a class="fw-bold" asp-action="Login" asp-controller="Account">Login</a></p>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label">Full Name</label>
+            <input asp-for="Name" type="text" class="form-control" >
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="DOB" class="form-label">Day Of Birth</label>
+            <input asp-for="DOB" type="date" class="form-control" >
+            <span asp-validation-for="DOB" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label">Email address</label>
+            <input asp-for="Email" type="email" class="form-control" placeholder="name@example.com">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Password" class="form-label">Password</label>
+            <input asp-for="Password" type="password" class="form-control">
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 ">
+            <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+            <input asp-for="ConfirmPassword" class="form-control">
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input"  />
+            <label class="form-check-label">
+                I want to receive emails from Chelsea FC about club news, ticket availability, competitions, offers and product and services
+                
+            </label>
+        </div>
+
+
+        <div class="mb-3 form-check">
+            <input asp-for="AgreeTerms" class="form-check-input" />
+            <label asp-for="AgreeTerms" class="form-check-label">
+                I agree to the
+                <a class="text-primary fw-bold" href="#">Terms &amp; Conditions</a>
+                and
+                <a class="text-primary fw-bold" href="#">Privacy Policy</a>
+            </label>
+          
+            <div class="w-100 mt-2">
+                <span asp-validation-for="AgreeTerms" class="text-danger"></span>
+            </div>
+        </div>
+
+        
+
+
+        <button type="submit" class="btn btn-primary mt-3">Register</button>
+
+
+
+    </form>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

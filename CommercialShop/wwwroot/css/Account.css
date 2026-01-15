@@ -1,0 +1,33 @@
+﻿#box {
+    display: inline-block; /* allow box to shrink to content */
+    
+    min-width: 550px; 
+    max-width: 600px; /* prevents it from getting too wide on large screens */
+    background-color: white;
+    /* padding comes from the .p-4 class in the view; adjust here if you prefer */
+}
+
+#user_title {
+    color: rgb(0, 20, 137)
+}
+
+body.account-bg {
+    background-image: url("/Image/Stadium.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+footer {
+    background-color :  rgb(6, 7, 113);
+    color:white
+    
+}
+
+/* logo sizing */
+.logo {
+    height: 64px;
+    width: auto;
+    display: block;
+}

@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "Shared/AccountLayout/_AccountLayout.cshtml";
+    ViewData["Title"] = "Email Sent";
+    ViewBag.Header = "Email Sent";
+}
+
+@model CommercialShop.Models.VerifyEmailDTOs.VerifyEmail
+
+
+<div>
+   <div>
+       <p class="text-center">An email has been sent to your Email address. Please check your Email</p>
+       <div class="text-center mt-2">
+           <a class="fw-bold" asp-asp-controller="Account" asp-action="Login">Back To Log In</a>
+       </div>
+   </div>
+</div>
+
+@section Scripts {
+    <!-- render the partial that includes jquery.validate/unobtrusive.
+         Ensure jQuery is loaded in the layout before these or include it here. -->
+    <partial name="_ValidationScriptsPartial" />
+}

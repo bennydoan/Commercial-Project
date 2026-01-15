@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "WomenPage";
+}
+
+@model IEnumerable<Product>
+
+
+
+<div class="col-lg-12 mt-5 d-md-flex">
+    <div class="col-lg-2 border-top p-2">
+        <partial name="~/Views/Shared/_Partial/_FilterPartial.cshtml" model="ViewBag.WomenCategories" />
+    </div>
+
+    <div class=" col-12 col-lg-10 px-3 row g-3">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4 col-6">
+                @foreach (var image in product.images)
+                {
+                    <a asp-action="ProductDetails" asp-controller="Product" asp-route-id="@product.ProductId">
+                        <img class="img-fluid productImage mb-3" src="@image.ImagePath" />
+                    </a>
+                }
+                <p class="fw-bold">@product.ProductName</p>
+                <p class="fw-bold">
+
+                    @($"$A{product.Price}")
+                </p>
+            </div>
+        }
+    </div>
+</div>
+

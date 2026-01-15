@@ -1,0 +1,140 @@
+﻿@{
+    ViewData["Title"] = "Product Details";
+}
+
+@model CommercialShop.ViewModel.ProductDetailViewModel
+
+<link rel="stylesheet" href="~/css/ProductDetails.css" />
+
+<div class="d-md-flex col-md-12 mt-2 p-5 gap-3">
+    @* Text first in DOM so it appears above images on small screens *@
+    <div class="col-md-5 col-12 order-1 order-md-2 d-flex flex-column gap-4">
+        <h4 class="fw-bolder">@Model.ProductName</h4>
+
+        <h6>Your Price: A$@Model.Price</h6>
+
+        <div class="d-flex">
+            <h6>Size:</h6>
+            <a href="#" id="openSizeChart" class="text-dark ms-auto">Size Chart</a>
+        </div>
+
+      
+        <form asp-controller="Cart" asp-action="ShoppingCart" method="post">
+
+            <!-- Send ProductId -->
+            <input type="hidden" name="ProductId" value="@Model.ProductId" />
+
+            <div role="radiogroup" class="d-flex flex-wrap gap-2 pb-4">
+                @foreach (var s in Model.Sizes)
+                {
+                    var inputId = $"size_{s.SizeId}";
+                    var isOutOfStock = s.StockQuantity <= 0;
+
+                    <input type="radio"
+                           class="btn-check"
+                           name="SizeId"
+                           id="@inputId"
+                           value="@s.SizeId"
+                           autocomplete="off"
+                           required
+                           @(isOutOfStock ? "disabled" : "") />
+
+                    <label class="btn fourthBtn fw-semibold rounded-0 @(isOutOfStock ? "opacity-50 text-decoration-line-through" : "")"
+                           for="@inputId">
+                        @s.SizeName
+                    </label>
+                }
+            </div>
+
+
+            <button type="submit"
+                    class="btn btn-dark lastBtn1 fw-bold rounded-0 w-100">
+                Add To Cart
+            </button>
+
+        </form>
+
+        @* Description *@
+
+        <div class="border-top pt-3">
+            <h6>Description</h6>
+            <p>@Model.ProductDescription</p>
+        </div>
+
+        @* Details *@
+
+        <div class="border-top py-3">
+            <h6>Details</h6>
+            @foreach(var d in Model.Details)
+            {
+                <ul>
+                    <li>
+                        <p>@d</p>
+                    </li>
+                </ul>
+            }
+        </div>
+
+        @* Shipping *@
+
+        <div class="border-top py-3">
+            <h6>Shipping</h6>
+            <ul>
+                <li>
+                    <p>
+                        This item usually ships within 1 business day. Items with name and number personalisation ship within 2 business days. Please proceed to checkout for shipping options and additional transit times.
+                    </p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+
+    @* Images second in DOM, but reordered to appear left on md+ *@
+    <div class="col-md-7 col-12 order-2 order-md-1">
+       
+        <div id="carouselExampleIndicators" class="carousel slide">
+            <div class="carousel-indicators">
+
+                @for(int O =0; O< Model.ImagePaths.Count();O++)
+                {
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="@O" class="@(O == 0 ? "active" : "")" aria-current="@(O == 0 ? "true" : "false")" aria-label="Slide @(O + 1)"></button>
+
+                }
+               
+            </div>
+            <div class="carousel-inner">
+                @for (int idx = 0; idx < Model.ImagePaths.Count(); idx++)
+                {
+                    <div class="carousel-item @(idx == 0 ? "active" : "")">
+                        <img src="@Model.ImagePaths[idx]" class="d-block ShownImage" alt="@Model.ProductName" />
+                    </div>
+                }
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div id="sizeChartBlock" class="border rounded-2 p-3 d-flex flex-column align-items-center justify-content-center d-none sizeCtn">
+    <button type="button" id="closeSizeChart" class="btn-close align-self-end mb-2" aria-label="Close"></button>
+
+    <h3>
+        Fanatic Tops
+    </h3>
+
+    <p class="fw-lighter">Measurements refer to body dimensions</p>
+
+    <img class="img-fluid" src="@ViewBag.SizeImage" />
+</div>
+
+
+<script src="~/js/Product.js" asp-append-version="true"></script>

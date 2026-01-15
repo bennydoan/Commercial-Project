@@ -1,0 +1,88 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "CheckOut";
+}
+
+
+
+<link rel ="stylesheet" href="~/css/ShoppingCart.css" />
+
+
+<p class="text-center greenText mt-4"><i class="fa-solid fa-fire"></i> Items May Sell Out, Order Now!</p>
+
+
+<div class="mt-4 px-5 d-md-flex gap-4">
+
+   
+     
+            <div class="border-top border-bottom col-lg-9 col-12 py-3 d-inline-flex gap-5 justify-content-between">
+                <div>
+                    <img src="/Image/chelseaLogo.png" />
+                </div>
+                <div class="d-flex flex-column gap-2">
+                    <p>ssss</p>
+                    <div class="d-flex gap-2">
+                        <div>
+                            <label for="sizeSelect" class="fw-bold">Size</label>
+                            <select id="sizeSelect" class="form-select" aria-label="Default select example">
+                                <option selected>S</option>
+
+                            </select>
+                        </div>
+
+
+
+                    </div>
+                    <p class="greenText">This item will ship within 1 business day. Please proceed to checkout for shipping options and additional transit times.</p>
+
+                </div>
+                <div>
+                    <p class="fw-light">$172.00</p>
+                </div>
+            </div>
+
+            <div class="border col-lg-3 p-2 d-flex flex-column gap-2">
+
+                <label class="fw-bold">Have a Promo Code?</label>
+
+                <div class="d-flex gap-2">
+                    <div>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="code">
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3">Apply</button>
+                    </div>
+
+                </div>
+
+                <div id="orderSum" class="p-2 d-flex flex-column gap-2">
+                    <div class="border-bottom border-black">
+                        <h5>Order Summary</h5>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <p>Item Total</p>
+                            <p>A$171.00</p>
+                        </div>
+
+                        <div class="d-flex justify-content-between fw-bold">
+                            <p>Cart Total</p>
+                            <p>A$171.00</p>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="lastBtn1 fw-bold text-center"><i class="fa-solid fa-lock"></i> Checkout</button>
+
+                <a asp-action="Index" asp-controller="Home" class="text-center">CONTINUE SHOPPING</a>
+
+            </div>
+    
+
+
+    
+
+</div>
