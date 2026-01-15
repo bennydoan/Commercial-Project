@@ -3,3 +3,5 @@
 bin/
 obj/
 
+# Ignore the appsettings file for the CommercialShop project
+CommercialShop/appsettings.json
